@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <style>
+    /* HERO */
+    .hero {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5)),
+        url("https://raw.githubusercontent.com/juliandres11/Karate-Kanri/refs/heads/main/Resources/Aula.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+      color: #fff;
+    }
+
+    .logo {
+      max-height: clamp(8rem, 15vw, 12rem);
+    }
+
+    /* BOTÓN */
+    .btn-dojo {
+      background-color: #c00000;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 120%;
+    }
+
+    .btn-dojo:hover {
+      background-color: #9f0000;
+      color: #fff;
+    }
+
+    /* Footer */
+    .hero-footer {
+      position: absolute;
+      bottom: 14px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2px;
+
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      color: rgba(255, 255, 255, 1);
+    }
+
+    .hero-footer span {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .hero-footer strong {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .hero-footer em {
+      font-size: 0.8rem;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="content">
+    <section class="hero d-flex align-items-start pt-2">
+      <div class="container hero-content text-center">
+
+        <!-- Logo -->
+        <img src="https://raw.githubusercontent.com/juliandres11/Karate-Kanri/refs/heads/main/Resources/Logo.png"
+                class="logo mb-3" alt="Logo Karate Kanri">
+
+        <!-- Títulos -->
+        <h1 class="display-4 fw-bold">Karate Kanri</h1>
+        <p class="h4 mb-5">
+          Más tiempo para enseñar, menos para administrar.
+        </p>
+
+        <!-- Botones -->
+        <div class="row justify-content-center g-3">
+
+          <div class="col-12 col-md-3">
+            <button class="btn btn-dojo w-100" onclick="loadPage('RegistroAlumnos')">
+                        Registro de Alumnos
+                    </button>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <button class="btn btn-dojo w-100">
+                        Registro de Asistencia
+                    </button>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <button class="btn btn-dojo w-100">
+                        Cronograma de Actividades
+                    </button>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <button class="btn btn-dojo w-100">
+                        Registro de Pagos
+                    </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="hero-footer">
+        <span>Desarrollado por:</span>
+        <strong>Ing. Julian Andres</strong>
+        <em>C.N 2° Dan</em>
+      </footer>
+
+
+
+    </section>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+    /**
+      * Carga dinámicamente una página HTML desde el servidor usando Google Apps Script.
+      * @param {string} pageName - El nombre del archivo HTML que se desea incluir.
+      * Este método utiliza `google.script.run` para ejecutar la función `include` del lado del servidor.
+      * Cuando la respuesta es exitosa, se llama al manejador `showPage` para mostrar el contenido.
+    */
+    function loadPage(pageName) {
+      google.script.run
+        .withSuccessHandler(showPage)
+        .include(pageName);
+        }
+     
+    /**
+      * Muestra el contenido HTML recibido en el contenedor principal de la página.
+      * @param {string} htmlContent - El contenido HTML que se va a insertar en el elemento con ID 'content'.
+      * Este método actualiza el DOM y registra en consola que el contenido fue cargado.
+    */
+
+    function showPage(htmlContent) {
+      document.getElementById('content').innerHTML = htmlContent;
+      console.log("📄 HTML loaded");
+      }
+  </script>
+</body>
+
+</html>
